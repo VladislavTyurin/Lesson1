@@ -25,7 +25,7 @@ target_link_libraries(Lesson1_cli lesson1)
 
 target_link_libraries(test_version
         ${Boost_LIBRARIES}
-        lesson1)
+        Lesson1)
 
 install(TARGETS Lesson1_cli RUNTIME DESTINATION bin)
 
