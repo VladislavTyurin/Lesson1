@@ -7,6 +7,7 @@ script:
 deploy:
   provider: script
   skip_cleanup: true
+  script:
   - curl -T helloworld-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb
     -uVladislavTyurin:$BINTRAY_API_KEY "https://api.bintray.com/content/vladislavtyurin/otus-cpp/
     lesson1/$TRAVIS_BUILD_NUMBER/helloworld-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb;
