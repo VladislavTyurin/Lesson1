@@ -8,24 +8,26 @@ configure_file(version.h.in version.h)
 
 add_executable(Lesson1_cli main.cpp)
 
+add_executable(test_version_cli test_version.cpp)
+
 add_library(lesson1 lib.cpp)
 
-set_target_properties(Lesson1_cli lesson1 test_version PROPERTIES
+set_target_properties(Lesson1_cli lesson1 test_version_cli PROPERTIES
         CXX_STANDARD 14
         CXX_STANDARD_REQUIRED ON
         COMPILE_OPTIONS -Wpedantic -Wall -Wextra
         )
 
-set_target_properties(test_version PROPERTIES
+set_target_properties(test_version_cli PROPERTIES
         COMPILE_DEFINITIONS BOOST_TEST_DYN_LINK
         INCLUDE_DIRECTORIES ${Boost_INCLUDE_DIR}
         )
 
 target_link_libraries(Lesson1_cli lesson1)
 
-target_link_libraries(test_version
+target_link_libraries(test_version_cli
         ${Boost_LIBRARIES}
-        Lesson1)
+        lesson1)
 
 install(TARGETS Lesson1_cli RUNTIME DESTINATION bin)
 
@@ -40,4 +42,4 @@ include(CPack)
 
 enable_testing()
 
-add_test(test_version test_version)
+add_test(test_version test_version_cli)
