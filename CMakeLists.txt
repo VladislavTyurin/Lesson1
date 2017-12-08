@@ -40,4 +40,4 @@ include(CPack)
 
 enable_testing()
 
-add_test(test_version version_test.cpp)
+add_test(test_version test_version)
